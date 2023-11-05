@@ -1,4 +1,5 @@
 import { Avatar, Dropdown, Navbar } from 'flowbite-react';
+import { Link, NavLink } from 'react-router-dom';
 
 const MyNavbar = () => {
     return (
@@ -9,7 +10,7 @@ const MyNavbar = () => {
             </Navbar.Brand>
             <div className="flex md:order-2">
                 <Dropdown
-                    arrowIcon={false}
+                    arrowIcon={true}
                     inline
                     label={
                         <Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded />
@@ -32,7 +33,17 @@ const MyNavbar = () => {
                     Home
                 </Navbar.Link>
                 <Navbar.Link href="#">About</Navbar.Link>
-                <Navbar.Link href="#">Services</Navbar.Link>
+                {/* <Navbar.Link href="#">Services</Navbar.Link> */}
+                <Dropdown
+                    arrowIcon={true}
+                    inline
+                    label={"Services"}
+                >
+                    <Dropdown.Item href='#'>Dashboard</Dropdown.Item>
+                    <Dropdown.Item href='#'>ManageService</Dropdown.Item>
+                    <Dropdown.Item href='#'>MySchedule</Dropdown.Item>
+                    {/* <Link><Dropdown.Item className='bg-red-300'>MySchedule</Dropdown.Item></Link> */}
+                </Dropdown>
                 <Navbar.Link href="#">Pricing</Navbar.Link>
                 <Navbar.Link href="#">Contact</Navbar.Link>
             </Navbar.Collapse>
