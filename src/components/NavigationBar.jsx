@@ -1,12 +1,12 @@
 import { Avatar, Dropdown, Navbar } from 'flowbite-react';
-import { Link, NavLink } from 'react-router-dom';
+// import { Link, NavLink } from 'react-router-dom';
 
-const MyNavbar = () => {
+const NavigationBar = () => {
     return (
         <Navbar fluid rounded>
             <Navbar.Brand href="https://flowbite-react.com">
                 <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
-                <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite React</span>
+                <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">PrinterHubFinder</span>
             </Navbar.Brand>
             <div className="flex md:order-2">
                 <Dropdown
@@ -17,8 +17,8 @@ const MyNavbar = () => {
                     }
                 >
                     <Dropdown.Header>
-                        <span className="block text-sm">Bonnie Green</span>
-                        <span className="block truncate text-sm font-medium">name@flowbite.com</span>
+                        <span className="block text-sm">RoneeMRayhan</span>
+                        <span className="block truncate text-sm font-medium">roneemrayhan@rayhanworld.com</span>
                     </Dropdown.Header>
                     <Dropdown.Item>Dashboard</Dropdown.Item>
                     <Dropdown.Item>Settings</Dropdown.Item>
@@ -32,23 +32,23 @@ const MyNavbar = () => {
                 <Navbar.Link href="#" active>
                     Home
                 </Navbar.Link>
-                <Navbar.Link href="#">About</Navbar.Link>
+                <Navbar.Link href="#">Services</Navbar.Link>
                 {/* <Navbar.Link href="#">Services</Navbar.Link> */}
                 <Dropdown
                     arrowIcon={true}
                     inline
-                    label={"Services"}
+                    label={"Dashboard"}
                 >
-                    <Dropdown.Item href='#'>Dashboard</Dropdown.Item>
-                    <Dropdown.Item href='#'>ManageService</Dropdown.Item>
-                    <Dropdown.Item href='#'>MySchedule</Dropdown.Item>
+                    <Dropdown.Item href='#'>My Services</Dropdown.Item>
+                    <Dropdown.Item href='#'>Add Services</Dropdown.Item>
+                    <Dropdown.Item href='#'>My Schedules</Dropdown.Item>
                     {/* <Link><Dropdown.Item className='bg-red-300'>MySchedule</Dropdown.Item></Link> */}
                 </Dropdown>
-                <Navbar.Link href="#">Pricing</Navbar.Link>
-                <Navbar.Link href="#">Contact</Navbar.Link>
+                <Navbar.Link href="#">Logout</Navbar.Link>
+                <Navbar.Link href="#">Login</Navbar.Link>
             </Navbar.Collapse>
         </Navbar>
     );
 };
 
-export default MyNavbar;
+export default NavigationBar;

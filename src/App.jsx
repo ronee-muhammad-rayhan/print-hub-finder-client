@@ -1,13 +1,13 @@
 import './App.css'
-import MyNavbar from './components/MyNavbar'
-import MyPage from './components/button'
+import NavigationBar from './components/NavigationBar'
+import MyPage from './components/MyPage'
 
 function App() {
 
   return (
     <>
       <h1>PrintHubFinder</h1>
-      <MyNavbar></MyNavbar>
+      <NavigationBar></NavigationBar>
       <MyPage></MyPage>
     </>
   )
