@@ -1,26 +1,30 @@
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
+import { Link } from "react-router-dom";
 
 const Register = () => {
     return (
-        <form className="flex max-w-md flex-col gap-4">
-            <div>
-                <div className="mb-2 block">
-                    <Label htmlFor="email1" value="Your email" />
+        <>
+            <form className="flex max-w-[1200px] flex-col gap-4 mx-auto w-3/4 md:w-2/3 lg:w-1/2">
+                <div>
+                    <div className="mb-2 block">
+                        <Label htmlFor="email1" value="Your email" />
+                    </div>
+                    <TextInput id="email1" type="email" placeholder="name@flowbite.com" required />
                 </div>
-                <TextInput id="email1" type="email" placeholder="name@flowbite.com" required />
-            </div>
-            <div>
-                <div className="mb-2 block">
-                    <Label htmlFor="password1" value="Your password" />
+                <div>
+                    <div className="mb-2 block">
+                        <Label htmlFor="password1" value="Your password" />
+                    </div>
+                    <TextInput id="password1" type="password" required />
                 </div>
-                <TextInput id="password1" type="password" required />
-            </div>
-            <div className="flex items-center gap-2">
-                <Checkbox id="remember" />
-                <Label htmlFor="remember">Remember me</Label>
-            </div>
-            <Button type="submit">Register</Button>
-        </form>
+                <div className="flex items-center gap-2">
+                    <Checkbox id="remember" />
+                    <Label htmlFor="remember">Remember me</Label>
+                </div>
+                <Button type="submit">Register</Button>
+            </form>
+            <p className="text-center py-4">Already have an Account? <Link to={`/login`} className="text-orange-500 font-bold">Login</Link></p>
+        </>
     );
 };
 
