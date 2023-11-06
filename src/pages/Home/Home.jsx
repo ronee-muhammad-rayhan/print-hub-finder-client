@@ -1,8 +1,14 @@
+import Slider from "./Slider";
 
 const Home = () => {
     return (
         <div>
-            Home
+            {/* HomePage */}
+            {/* Banner/Slider Section */}
+            <Slider></Slider>
+            {/* Popular Services Section */}
+            {/* The Featured Section */}
+            {/* 3 Extra Sections */}
         </div>
     );
 };
