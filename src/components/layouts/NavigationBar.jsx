@@ -1,4 +1,5 @@
 import { Avatar, Dropdown, Navbar } from 'flowbite-react';
+import { Link } from 'react-router-dom';
 // import { Link, NavLink } from 'react-router-dom';
 
 const NavigationBar = () => {
@@ -40,7 +41,7 @@ const NavigationBar = () => {
                     label={"Dashboard"}
                 >
                     <Dropdown.Item href='#'>My Services</Dropdown.Item>
-                    <Dropdown.Item href='#'>Add Services</Dropdown.Item>
+                    <Link to={`/add-a-service`}><Dropdown.Item href='#'>Add Services</Dropdown.Item></Link>
                     <Dropdown.Item href='#'>My Schedules</Dropdown.Item>
                     {/* <Link><Dropdown.Item className='bg-red-300'>MySchedule</Dropdown.Item></Link> */}
                 </Dropdown>
