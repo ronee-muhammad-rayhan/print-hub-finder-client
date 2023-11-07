@@ -12,6 +12,7 @@ import {
     updateProfile,
 } from "firebase/auth";
 import { app } from "../config/firebase.config";
+import axios from "axios";
 
 const providerGoogle = new GoogleAuthProvider();
 
@@ -64,10 +65,26 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
 
+            const userEmail = currentUser?.email || user?.email;
+            const loggedInUser = { email: userEmail }
+
             // values of the current user
             console.log('value of current user: ' + currentUser);
             setUser(currentUser);
             setLoading(false);
+
+            // if user exists then issue a token
+            if (currentUser) {
+                axios.post('http://localhost:5003/jwt', loggedInUser, { withCredentials: true })
+                    .then(res => {
+                        console.log('token response: ' + res.data);
+                    })
+            } else {
+                axios.post('http://localhost:5003/logout', loggedInUser, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data);
+                    })
+            }
 
         });
         return () => {
