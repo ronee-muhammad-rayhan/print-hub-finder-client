@@ -1,22 +1,24 @@
 import { useLoaderData } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const ServiceDetails = () => {
+    const { user } = useAuth();
     const service = useLoaderData();
+    const { _id, nameOfService, nameOfServiceProvider, email, price, serviceArea, description, image } = service;
     return (
-        <div>
-            <img src={service.image} alt="" />
+        <div className="flex justify-center mx-auto text-center">
             <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-900 dark:text-gray-100">
                 <div className="flex space-x-4">
-                    <img alt="" src="https://source.unsplash.com/100x100/?portrait" className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500" />
+                    <img alt="" src={user?.photoURL} className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500" />
                     <div className="flex flex-col space-y-1">
-                        <a rel="noopener noreferrer" href="#" className="text-sm font-semibold">Leroy Jenkins</a>
-                        <span className="text-xs dark:text-gray-400">4 hours ago</span>
+                        <a rel="noopener noreferrer" href="#" className="text-sm font-semibold">{nameOfServiceProvider}</a>
+                        <span className="text-xs dark:text-gray-400">{serviceArea}</span>
                     </div>
                 </div>
                 <div>
-                    <img src="https://source.unsplash.com/random/100x100/?5" alt="" className="object-cover w-full mb-4 h-60 sm:h-96 dark:bg-gray-500" />
-                    <h2 className="mb-1 text-xl font-semibold">Nam cu platonem posidonium sanctus debitis te</h2>
-                    <p className="text-sm dark:text-gray-400">Eu qualisque aliquando mel, id lorem detraxit nec, ad elit minimum pri. Illum ipsum detracto ne cum. Mundi nemore te ius, vim ad illud atqui apeirian...</p>
+                    <img src={image} alt="" className="object-cover w-full mb-4 h-60 sm:h-96 dark:bg-gray-500" />
+                    <h2 className="mb-1 text-xl font-semibold">{nameOfService}</h2>
+                    <p className="text-sm dark:text-gray-400">{description}</p>
                 </div>
                 <div className="flex flex-wrap justify-between">
                     <div className="space-x-2">
