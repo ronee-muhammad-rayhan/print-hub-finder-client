@@ -6,6 +6,7 @@ import useAuth from "../../hooks/useAuth";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import TitleHelmet from "../../components/ui/TitleHelmet";
+import axios from "axios";
 
 const Login = () => {
     const { loginUser, setUser, loginWithGoogle } = useAuth();
@@ -25,8 +26,21 @@ const Login = () => {
         loginUser(email, password)
             .then((userCredential) => {
                 // user logged in successfully
-                setUser(userCredential.user);
+                // setUser(userCredential.user);
                 console.log(userCredential.user);
+
+                const loggedInUser = userCredential.user;
+                setUser(loggedInUser);
+
+                const user = { email };
+
+                console.log(user);
+
+                axios.post('http://localhost:5003/jwt', user, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data);
+                    })
+
                 notify();
                 // navigate(`${location.state}`);
                 if (location.state) {
