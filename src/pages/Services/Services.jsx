@@ -12,8 +12,10 @@ const Services = () => {
 
     // const [renderServices, setRenderServices] = useState(services);
 
+    const url = `http://localhost:5003/services`
+
     useEffect(() => {
-        axios.get('http://localhost:5003/services')
+        axios.get(url, { withCredentials: true })
             .then((response) => {
                 console.log(response.data);
                 setServices(response.data);

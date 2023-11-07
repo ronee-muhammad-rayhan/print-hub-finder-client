@@ -39,15 +39,19 @@ const Login = () => {
                 axios.post('http://localhost:5003/jwt', user, { withCredentials: true })
                     .then(res => {
                         console.log(res.data);
+                        if (res.data.success) {
+                            notify();
+                            navigate(location?.state ? location.state : '/')
+                        }
                     })
 
-                notify();
+                // notify();
                 // navigate(`${location.state}`);
-                if (location.state) {
-                    navigate(`${location.state}`);
-                } else {
-                    navigate('/');
-                }
+                // if (location.state) {
+                //     navigate(`${location.state}`);
+                // } else {
+                //     navigate('/');
+                // }
                 // navigate after login
                 // navigate(location?.state ? location.state : '/');
             })
