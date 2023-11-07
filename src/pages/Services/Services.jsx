@@ -8,19 +8,34 @@ const Services = () => {
     // const [minServices, setMinServices] = useState([]);
     // const [renderServices, setRenderServices] = useState([]);
     // const [showAll, setShowAll] = useState(false);
+    // const [seeMoreClicked, setSeeMoreClicked] = useState(false);
+
+    // const [renderServices, setRenderServices] = useState(services);
 
     useEffect(() => {
         axios.get('http://localhost:5003/services')
             .then((response) => {
                 console.log(response.data);
                 setServices(response.data);
-            })
+            });
     }, []);
 
     // if (!showAll && !minServices) {
     //     const selectedServices = services.slice(1, 4);
     //     setMinServices(selectedServices);
     //     setRenderServices(selectedServices);
+    // }
+
+    // if (services.length > 4 && seeMoreClicked === true) {
+    //     // setRenderServices(services);
+    //     // setShowAll(false);
+    // }
+    // else if (services.length > 4 && seeMoreClicked === false) {
+    //     setRenderServices(services.slice(0, 4));
+    //     // setShowAll(true);
+    // } else {
+    //     // setShowAll(false);
+    //     // setRenderServices(services);
     // }
 
     return (
@@ -36,9 +51,13 @@ const Services = () => {
                     // renderServices?.map((service) => <ServiceCard key={service._id} service={service}></ServiceCard>)
                 }
             </section>
-            {/* {
-             !showAll ||   <div><button onClick={setShowAll(!showAll)}>See More</button></div>
-            } */}
+
+            {/* <div onClick={() => setSeeMoreClicked(true)} className='text-center pt-14 pb-40' style={{}}>
+                {
+                    showAll && <button className='bg-[#009444] text-white text-xs font-semibold px-7 py-4 rounded-lg'>See More</button>
+                }
+            </div> */}
+
         </div>
     );
 };

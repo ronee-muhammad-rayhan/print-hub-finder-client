@@ -1,12 +1,13 @@
 import PropTypes from "prop-types"
 import useAuth from "../../hooks/useAuth";
 import { Card } from "flowbite-react";
+import { Link } from "react-router-dom";
 
 const ServiceCard = ({ service }) => {
 
     const { user } = useAuth();
 
-    const { nameOfService, nameOfServiceProvider, email, price, serviceArea, description, image } = service;
+    const { _id, nameOfService, nameOfServiceProvider, email, price, serviceArea, description, image } = service;
 
     return (
         <div className="w-full mx-auto my-8">
@@ -26,7 +27,7 @@ const ServiceCard = ({ service }) => {
                         <div className="p-4">
                             <h2 className="text-2xl font-semibold mb-2">{nameOfService}</h2>
                             <p className="text-gray-600 mb-4">{description}</p>
-                            <a href="#" className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full inline-block">View Details</a>
+                            <Link to={`/services/${_id}`} className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full inline-block">View Details</Link>
                         </div>
                         <div className="flex items-center p-4 border-t border-gray-200">
                             <img className="w-8 h-8 rounded-full" src={user?.photoURL} alt="Service Provider Image" />
