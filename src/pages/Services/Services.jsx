@@ -5,6 +5,9 @@ import ServiceCard from './ServiceCard';
 const Services = () => {
 
     const [services, setServices] = useState([]);
+    // const [minServices, setMinServices] = useState([]);
+    // const [renderServices, setRenderServices] = useState([]);
+    // const [showAll, setShowAll] = useState(false);
 
     useEffect(() => {
         axios.get('http://localhost:5003/services')
@@ -13,6 +16,12 @@ const Services = () => {
                 setServices(response.data);
             })
     }, []);
+
+    // if (!showAll && !minServices) {
+    //     const selectedServices = services.slice(1, 4);
+    //     setMinServices(selectedServices);
+    //     setRenderServices(selectedServices);
+    // }
 
     return (
         <div className='w-full flex flex-col mx-auto border border-red-500'>
@@ -24,8 +33,12 @@ const Services = () => {
             <section className='flex flex-col w-full mx-auto'>
                 {
                     services.map((service) => <ServiceCard key={service._id} service={service}></ServiceCard>)
+                    // renderServices?.map((service) => <ServiceCard key={service._id} service={service}></ServiceCard>)
                 }
             </section>
+            {/* {
+             !showAll ||   <div><button onClick={setShowAll(!showAll)}>See More</button></div>
+            } */}
         </div>
     );
 };
