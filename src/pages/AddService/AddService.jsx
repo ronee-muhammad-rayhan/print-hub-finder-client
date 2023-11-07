@@ -1,13 +1,17 @@
 import { Button, Label, TextInput } from "flowbite-react";
+import useAuth from "../../hooks/useAuth";
 
 const AddService = () => {
+
+    const { user } = useAuth();
+
     const handleSubmit = event => {
         event.preventDefault();
 
         const form = event.target;
 
         const nameOfService = form.nameOfService.value;
-        const nameOfServiceProvider = "RoneeMRayhan";//form.nameOfServiceProvider.value;
+        const nameOfServiceProvider = form.nameOfServiceProvider.value;
         const email = form.email.value;
         const price = form.price.value;
         const serviceArea = form.serviceArea.value;
@@ -15,6 +19,22 @@ const AddService = () => {
         const image = form.image.value;
 
         console.log(nameOfService, nameOfServiceProvider, email, price, serviceArea, description, image);
+
+        const service = {
+            nameOfService, nameOfServiceProvider, email, price, serviceArea, description, image
+        }
+
+        fetch('http://localhost:5003/services', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(service)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            });
     }
     return (
         <form onSubmit={handleSubmit} className=" sm:mx-0 mx-3 md:mx-5 lg:mx-7 xl:mx-14 2xl:mx-96">
@@ -29,13 +49,13 @@ const AddService = () => {
                     <div className="mb-2 block">
                         <Label htmlFor="nameOfServiceProviderme" value="NameOfServiceProvider" />
                     </div>
-                    <TextInput id="nameOfServiceProvider" type="text" name="nameOfServiceProvider" placeholder="Name of the Service" required />
+                    <TextInput id="nameOfServiceProvider" type="text" name="nameOfServiceProvider" defaultValue={user?.displayName} placeholder="Name of the Service provider" required readOnly />
                 </div>
                 <div>
                     <div className="mb-2 block">
                         <Label htmlFor="email" value="Your Email" />
                     </div>
-                    <TextInput id="email" type="email" name="email" required />
+                    <TextInput id="email" type="email" name="email" defaultValue={user?.email} required readOnly />
                 </div>
                 <div>
                     <div className="mb-2 block">
