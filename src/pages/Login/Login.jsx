@@ -30,7 +30,7 @@ const Login = () => {
                 notify();
                 // navigate(`${location.state}`);
                 if (location.state) {
-                    navigate(`${location.state})`);
+                    navigate(`${location.state}`);
                 } else {
                     navigate('/');
                 }
@@ -50,7 +50,7 @@ const Login = () => {
                 notify();
                 // navigate(`${location.state} || ${"/"}`);
                 if (location.state) {
-                    navigate(`${location.state})`);
+                    navigate(`${location.state}`);
                 } else {
                     navigate('/');
                 }

@@ -50,6 +50,7 @@ const ServiceCard = ({ service }) => {
 
 ServiceCard.propTypes = {
     service: PropTypes.shape({
+        _id: PropTypes.any,
         description: PropTypes.any,
         email: PropTypes.any,
         image: PropTypes.any,
@@ -59,5 +60,7 @@ ServiceCard.propTypes = {
         serviceArea: PropTypes.any
     })
 }
+
+
 
 export default ServiceCard;
