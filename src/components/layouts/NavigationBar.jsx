@@ -1,13 +1,26 @@
 import { Avatar, Dropdown, Navbar } from 'flowbite-react';
 import { Link, NavLink } from 'react-router-dom';
 import './NavigationBar.css';
+import useAuth from '../../hooks/useAuth';
 // import { Link, NavLink } from 'react-router-dom';
 
 const NavigationBar = () => {
+
+    const { user, logOut } = useAuth();
+
+    const handleLogout = () => {
+        logOut().then(() => {
+            console.log('logged out');
+        }).catch((error) => {
+            // An error happened.
+            console.error(error.message);
+        });
+    }
+
     return (
         <Navbar id='nav' fluid rounded>
-            <Navbar.Brand href="https://flowbite-react.com">
-                <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
+            <Navbar.Brand href="https://b8a11-client-print-hub-finder.web.app">
+                <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt="PrintHubFinder Logo" />
                 <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">PrinterHubFinder</span>
             </Navbar.Brand>
             <div className="flex md:order-2">
@@ -48,8 +61,14 @@ const NavigationBar = () => {
                     <Dropdown.Item href='#'>My Schedules</Dropdown.Item>
                     {/* <Link><Dropdown.Item className='bg-red-300'>MySchedule</Dropdown.Item></Link> */}
                 </Dropdown>
-                <Navbar.Link href="/">Logout</Navbar.Link>
-                <Navbar.Link href="/login">Login</Navbar.Link>
+                {
+                    user?.email
+                        ?
+                        <Navbar.Link onClick={handleLogout} href="/">Logout</Navbar.Link>
+                        :
+                        <Navbar.Link href="/login">Login</Navbar.Link>
+                }
+
             </Navbar.Collapse>
         </Navbar>
     );
