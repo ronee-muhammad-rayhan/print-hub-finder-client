@@ -6,6 +6,7 @@ import MainLayout from "../components/layouts/MainLayout";
 import Home from "../pages/Home/Home";
 import AddService from "../pages/AddService/AddService";
 import NotFound404 from "../pages/ErrorPage/NotFound404";
+import Services from "../pages/Services/Services";
 
 export const router = createBrowserRouter([
     {
@@ -16,6 +17,10 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 element: <Home></Home>
+            },
+            {
+                path: "services",
+                element: <Services></Services>
             },
             {
                 path: "login",
