@@ -56,7 +56,7 @@ const NavigationBar = () => {
                     inline
                     label={"Dashboard"}
                 >
-                    <Dropdown.Item href='#'>My Services</Dropdown.Item>
+                    <Link to={`/my-services?email=${user?.email}`}><Dropdown.Item>My Services</Dropdown.Item></Link>
                     <Link to={`/add-a-service`}><Dropdown.Item href='#'>Add Services</Dropdown.Item></Link>
                     <Dropdown.Item href='#'>My Schedules</Dropdown.Item>
                     {/* <Link><Dropdown.Item className='bg-red-300'>MySchedule</Dropdown.Item></Link> */}
