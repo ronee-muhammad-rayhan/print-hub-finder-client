@@ -5,10 +5,12 @@ import Register from "../pages/Register/Register";
 import MainLayout from "../components/layouts/MainLayout";
 import Home from "../pages/Home/Home";
 import AddService from "../pages/AddService/AddService";
+import NotFound404 from "../pages/ErrorPage/NotFound404";
 
 export const router = createBrowserRouter([
     {
         path: "/",
+        errorElement: <NotFound404></NotFound404>,
         element: <MainLayout></MainLayout>,
         children: [
             {

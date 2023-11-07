@@ -7,7 +7,7 @@ const FooterSection = () => {
             <div className="w-full">
                 <div className="grid w-full grid-cols-2 gap-8 px-6 py-8 md:grid-cols-4">
                     <div>
-                        <FooterComponent.Title title="Company" />
+                        <FooterComponent.Title title="PrintHubFinder" />
                         <FooterComponent.LinkGroup col>
                             <FooterComponent.Link href="#">About</FooterComponent.Link>
                             <FooterComponent.Link href="#">Careers</FooterComponent.Link>
@@ -43,7 +43,7 @@ const FooterSection = () => {
                     </div>
                 </div>
                 <div className="w-full bg-gray-700 px-4 py-6 sm:flex sm:items-center sm:justify-between">
-                    <FooterComponent.Copyright href="#" by="Flowbite™" year={2022} />
+                    <FooterComponent.Copyright href="#" by="PrinterHubFinder™" year={2023} />
                     <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
                         <FooterComponent.Icon href="#" icon={BsFacebook} />
                         <FooterComponent.Icon href="#" icon={BsInstagram} />

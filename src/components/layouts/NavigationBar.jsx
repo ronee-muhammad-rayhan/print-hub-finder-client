@@ -1,10 +1,11 @@
 import { Avatar, Dropdown, Navbar } from 'flowbite-react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import './NavigationBar.css';
 // import { Link, NavLink } from 'react-router-dom';
 
 const NavigationBar = () => {
     return (
-        <Navbar fluid rounded>
+        <Navbar id='nav' fluid rounded>
             <Navbar.Brand href="https://flowbite-react.com">
                 <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
                 <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">PrinterHubFinder</span>
@@ -30,10 +31,12 @@ const NavigationBar = () => {
                 <Navbar.Toggle />
             </div>
             <Navbar.Collapse>
-                <Navbar.Link href="#" active>
-                    Home
-                </Navbar.Link>
-                <Navbar.Link href="#">Services</Navbar.Link>
+                <NavLink>
+                    <Navbar.Link href="/">
+                        Home
+                    </Navbar.Link>
+                </NavLink>
+                <Navbar.Link href="/services">Services</Navbar.Link>
                 {/* <Navbar.Link href="#">Services</Navbar.Link> */}
                 <Dropdown
                     arrowIcon={true}
@@ -45,8 +48,8 @@ const NavigationBar = () => {
                     <Dropdown.Item href='#'>My Schedules</Dropdown.Item>
                     {/* <Link><Dropdown.Item className='bg-red-300'>MySchedule</Dropdown.Item></Link> */}
                 </Dropdown>
-                <Navbar.Link href="#">Logout</Navbar.Link>
-                <Navbar.Link href="#">Login</Navbar.Link>
+                <Navbar.Link href="/">Logout</Navbar.Link>
+                <Navbar.Link href="/login">Login</Navbar.Link>
             </Navbar.Collapse>
         </Navbar>
     );
