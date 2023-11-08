@@ -54,7 +54,7 @@ export const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:5003/my-services/update/${params.id}`)
             },
             {
-                path: "my-schedules",
+                path: "my-schedules/bookings",
                 element: <PrivateRoute><MySchedules></MySchedules></PrivateRoute>
             },
         ]
