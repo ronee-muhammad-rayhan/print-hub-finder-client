@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import BookingModal from "./BookingModal";
 
 const ServiceDetails = () => {
     const { user } = useAuth();
@@ -19,6 +20,9 @@ const ServiceDetails = () => {
                     <img src={image} alt="" className="object-cover w-full mb-4 h-60 sm:h-96 dark:bg-gray-500" />
                     <h2 className="mb-1 text-xl font-semibold">{nameOfService}</h2>
                     <p className="text-sm dark:text-gray-400">{description}</p>
+                </div>
+                <div className="mx-auto">
+                    <BookingModal></BookingModal>
                 </div>
                 <div className="flex flex-wrap justify-between">
                     <div className="space-x-2">
@@ -51,6 +55,7 @@ const ServiceDetails = () => {
                     </div>
                 </div>
             </div>
+
         </div>
     );
 };
