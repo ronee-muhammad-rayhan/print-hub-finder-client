@@ -1,4 +1,5 @@
 #nav a.active{
+    color: blue;
     text-decoration: underline;
     font-weight: bold;
     }

@@ -1,4 +1,5 @@
 import TitleHelmet from "../../components/ui/TitleHelmet";
+import { Example } from "./FramerMotion";
 import Slider from "./Slider";
 
 const Home = () => {
@@ -8,6 +9,7 @@ const Home = () => {
             {/* HomePage */}
             {/* Banner/Slider Section */}
             <Slider></Slider>
+            <Example></Example>
             {/* Popular Services Section */}
             {/* The Featured Section */}
             {/* 3 Extra Sections */}

@@ -2,7 +2,6 @@ import { Avatar, Dropdown, Navbar } from 'flowbite-react';
 import { Link, NavLink } from 'react-router-dom';
 import './NavigationBar.css';
 import useAuth from '../../hooks/useAuth';
-// import { Link, NavLink } from 'react-router-dom';
 
 const NavigationBar = () => {
 
@@ -20,7 +19,7 @@ const NavigationBar = () => {
     return (
         <Navbar id='nav' fluid rounded>
             <Navbar.Brand href="https://b8a11-client-print-hub-finder.web.app">
-                <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt="PrintHubFinder Logo" />
+                <img src="/logo1.jpeg" className="mr-3 h-6 sm:h-9" alt="PrintHubFinder Logo" />
                 <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">PrinterHubFinder</span>
             </Navbar.Brand>
             <div className="flex md:order-2">
@@ -28,28 +27,33 @@ const NavigationBar = () => {
                     arrowIcon={true}
                     inline
                     label={
-                        <Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded />
+                        user?.photoURL ?
+                            <Avatar alt="User settings" img={user.photoURL} rounded />
+                            :
+                            <Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded />
                     }
                 >
                     <Dropdown.Header>
-                        <span className="block text-sm">RoneeMRayhan</span>
-                        <span className="block truncate text-sm font-medium">roneemrayhan@rayhanworld.com</span>
+                        {
+                            user?.displayName ? <span className="block text-sm">{user.displayName}</span> : undefined
+                        }
+                        {
+                            user?.email ? <span className="block truncate text-sm font-medium">{user.email}</span> : undefined
+                        }
                     </Dropdown.Header>
-                    <Dropdown.Item>Dashboard</Dropdown.Item>
                     <Dropdown.Item>Settings</Dropdown.Item>
-                    <Dropdown.Item>Earnings</Dropdown.Item>
                     <Dropdown.Divider />
-                    <Dropdown.Item>Sign out</Dropdown.Item>
+                    <Dropdown.Item><Navbar.Link onClick={handleLogout} href="/">Logout</Navbar.Link></Dropdown.Item>
                 </Dropdown>
                 <Navbar.Toggle />
             </div>
             <Navbar.Collapse>
-                <NavLink>
-                    <Navbar.Link href="/">
-                        Home
-                    </Navbar.Link>
+                <NavLink to={`/`}>
+
+                    Home
+
                 </NavLink>
-                <Navbar.Link href="/services">Services</Navbar.Link>
+                <NavLink to="/services">Services</NavLink>
                 {/* <Navbar.Link href="#">Services</Navbar.Link> */}
                 <Dropdown
                     arrowIcon={true}
@@ -66,7 +70,7 @@ const NavigationBar = () => {
                         ?
                         <Navbar.Link onClick={handleLogout} href="/">Logout</Navbar.Link>
                         :
-                        <Navbar.Link href="/login">Login</Navbar.Link>
+                        <NavLink to={`/login`}>Login</NavLink>
                 }
 
             </Navbar.Collapse>

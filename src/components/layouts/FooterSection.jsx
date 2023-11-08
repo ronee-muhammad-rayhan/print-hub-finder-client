@@ -3,11 +3,18 @@ import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-
 
 const FooterSection = () => {
     return (
-        <FooterComponent bgDark>
+        <FooterComponent className='bg-gray-100'>
             <div className="w-full">
                 <div className="grid w-full grid-cols-2 gap-8 px-6 py-8 md:grid-cols-4">
                     <div>
-                        <FooterComponent.Title title="PrintHubFinder" />
+                        <a className='flex justify-start' href="/">
+                            <img src="/logo1.jpeg" className="mr-3 h-6 sm:h-9 rounded-md" alt="PrintHubFinder Logo" />
+                            <FooterComponent.Title title="PrintHubFinder" />
+                        </a>
+                        {/* <FooterComponent.Title href="https://b8a11-client-print-hub-finder.web.app">
+                            <img src="/logo1.jpeg" className="mr-3 h-6 sm:h-9" alt="PrintHubFinder Logo" />
+                            <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">PrinterHubFinder</span>
+                        </FooterComponent.Title> */}
                         <FooterComponent.LinkGroup col>
                             <FooterComponent.Link href="#">About</FooterComponent.Link>
                             <FooterComponent.Link href="#">Careers</FooterComponent.Link>
@@ -42,7 +49,7 @@ const FooterSection = () => {
                         </FooterComponent.LinkGroup>
                     </div>
                 </div>
-                <div className="w-full bg-gray-700 px-4 py-6 sm:flex sm:items-center sm:justify-between">
+                <div className="w-full bg-gray-100 px-4 py-6 sm:flex sm:items-center sm:justify-between">
                     <FooterComponent.Copyright href="#" by="PrinterHubFinder™" year={2023} />
                     <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
                         <FooterComponent.Icon href="#" icon={BsFacebook} />
