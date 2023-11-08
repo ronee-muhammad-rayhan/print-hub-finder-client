@@ -8,6 +8,20 @@ const BookingModal = ({ service }) => {
     const { _id, nameOfService, nameOfServiceProvider, email, price, serviceArea, description, image } = service;
     const { user } = useAuth();
 
+    const [specialInstruction, setSpecialInstruction] = useState('');
+    const [date, setDate] = useState(null);
+
+    const handleSpecialInstructionChange = (e) => {
+        setSpecialInstruction(e.target.value);
+    }
+    const handleDateChange = e => {
+        setDate(e.target.value);
+    }
+
+    const handleBooking = () => {
+        console.log(specialInstruction, date);
+    }
+
     return (
         <>
             <Button onClick={() => setOpenModal(true)}>Book Now</Button>
@@ -33,19 +47,19 @@ const BookingModal = ({ service }) => {
                             <div className="mb-2 block">
                                 <Label htmlFor="password" value="Service Taking Date" />
                             </div>
-                            <TextInput id="password" type="date" required />
+                            <TextInput id="password" type="date" value={date} onBlur={handleDateChange} required />
                         </div>
                         <div>
                             <div className="mb-2 block">
                                 <Label htmlFor="password" value="Special Instruction" />
                             </div>
-                            <TextInput id="password" type="text" required />
+                            <TextInput id="password" type="text" value={specialInstruction} onChange={handleSpecialInstructionChange} placeholder='anything like address , area, customized service plan.' required />
                         </div>
                         <div className="flex justify-between">
                             <h3>Price: ${price}</h3>
                         </div>
                         <div className="w-full">
-                            <Button className='mx-auto'>Purchase This Service</Button>
+                            <Button onClick={handleBooking} className='mx-auto'>Purchase This Service</Button>
                         </div>
                     </div>
                 </Modal.Body>
