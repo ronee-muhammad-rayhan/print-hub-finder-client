@@ -65,8 +65,8 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
 
-            const userEmail = currentUser?.email || user?.email;
-            const loggedInUser = { email: userEmail }
+            // const userEmail = currentUser?.email || user?.email;
+            // const loggedInUser = { email: userEmail }
 
             // values of the current user
             console.log('value of current user: ' + currentUser);
@@ -86,11 +86,17 @@ const AuthProvider = ({ children }) => {
             //         })
             // }
 
+            axios.post('http://localhost:5003/jwt', user, { withCredentials: true })
+                .then(res => {
+                    console.log(res.data);
+                    console.log(res.data.success);
+                })
+
         });
         return () => {
             return unSubscribe();
         }
-    }, [user?.email]);
+    }, [/* user?.email */user]);
 
     const authInfo = { user, loading, setLoading, createUser, setUser, loginUser, loginWithGoogle, logOut, updateUserProfile, /* updateUserEmail */ };
     return (

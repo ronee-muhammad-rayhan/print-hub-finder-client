@@ -6,7 +6,7 @@ import useAuth from "../../hooks/useAuth";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import TitleHelmet from "../../components/ui/TitleHelmet";
-import axios from "axios";
+// import axios from "axios";
 
 const Login = () => {
     const { loginUser, setUser, loginWithGoogle } = useAuth();
@@ -36,14 +36,23 @@ const Login = () => {
 
                 console.log(user);
 
-                axios.post('http://localhost:5003/jwt', user, { withCredentials: true })
+                /* axios.post('http://localhost:5003/jwt', user, { withCredentials: true })
                     .then(res => {
                         console.log(res.data);
                         if (res.data.success) {
                             notify();
                             navigate(location?.state ? location.state : '/')
                         }
-                    })
+                    }) */
+                notify();
+                navigate(location?.state ? location.state : '/')
+                if (location.state) {
+                    navigate(`${location.state}`);
+                } else {
+                    navigate('/');
+                }
+                // navigate after login
+                navigate(location?.state ? location.state : '/');
 
                 // notify();
                 // navigate(`${location.state}`);
