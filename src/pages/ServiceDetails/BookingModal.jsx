@@ -1,11 +1,12 @@
 import { Button, Checkbox, Label, Modal, TextInput } from 'flowbite-react';
 import { useRef, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
+import axios from 'axios';
 
 const BookingModal = ({ service }) => {
     const [openModal, setOpenModal] = useState(false);
     const emailInputRef = useRef < HTMLInputElement > (null);
-    const { _id, nameOfService, nameOfServiceProvider, email, price, serviceArea, description, image } = service;
+    const { _id, nameOfService, nameOfServiceProvider, email, price, serviceArea, description, image, imageOfServiceProvider } = service;
     const { user } = useAuth();
 
     const [specialInstruction, setSpecialInstruction] = useState('');
@@ -20,6 +21,27 @@ const BookingModal = ({ service }) => {
 
     const handleBooking = () => {
         console.log(specialInstruction, date);
+
+        const booking = {
+            nameOfService,
+            nameOfServiceProvider,
+            nameOfServiceReceiver: user.displayName,
+            emailOfServiceProvider: email,
+            emailOfServiceReceiver: user.email,
+            price,
+            serviceArea,
+            description,
+            date,
+            specialInstruction,
+            imageOfService: image,
+            imageOfServiceProvider,
+            imageOfServiceReceiver: user.photoURL,
+        }
+
+        axios.post(`http://localhost:5003/bookings/`, booking, { withCredentials: true })
+            .then(res => {
+                console.log(res.data);
+            })
     }
 
     return (

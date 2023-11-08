@@ -21,7 +21,15 @@ const AddService = () => {
         console.log(nameOfService, nameOfServiceProvider, email, price, serviceArea, description, image);
 
         const service = {
-            nameOfService, nameOfServiceProvider, email, price, serviceArea, description, image
+            nameOfService,
+            nameOfServiceProvider,
+            email,
+            price,
+            serviceArea,
+            description,
+            imageOfService: image,
+            imageOfServiceProvider: user.photoURL
+
         }
 
         fetch('http://localhost:5003/services', {
