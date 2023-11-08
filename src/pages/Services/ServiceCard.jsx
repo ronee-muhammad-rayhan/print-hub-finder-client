@@ -7,13 +7,13 @@ const ServiceCard = ({ service }) => {
 
     const { user } = useAuth();
 
-    const { _id, nameOfService, nameOfServiceProvider, email, price, serviceArea, description, image } = service;
+    const { _id, nameOfService, nameOfServiceProvider, /* email, */ price, serviceArea, description, image } = service;
 
     return (
-        <div className="w-full mx-auto my-8">
+        <div className="w-full mx-auto my-8 flex">
 
 
-            <Card className={`border-red-600 md:w-auto mx-auto flex rounded-lg bg-white shadow-md dark:border-gray-700 dark:bg-gray-800 flex-col md:max-w-[calc(100%-30px)] md:flex-row`} imgSrc={image} horizontal>
+            <Card className={`md:w-auto mx-auto flex rounded-lg bg-white shadow-md dark:border-gray-700 dark:bg-gray-800 flex-col md:max-w-[calc(100%-30px)] md:flex-row`} imgSrc={image} horizontal>
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     Noteworthy technology acquisitions 2021
                 </h5>

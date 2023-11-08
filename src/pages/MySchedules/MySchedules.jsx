@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import TitleHelmet from "../../components/ui/TitleHelmet";
 
 const MySchedules = () => {
     const { user } = useAuth();
@@ -20,6 +21,7 @@ const MySchedules = () => {
     }, [user?.email]);
     return (
         <div>
+            <TitleHelmet title='PrintHubFinder | MySchedules'></TitleHelmet>
             MySchedules
             {/* Bookings Section => /my-schedules/bookings -> get */}
             <h3>{bookings.length}</h3>

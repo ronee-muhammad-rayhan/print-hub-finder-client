@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import BookingModal from "./BookingModal";
+import TitleHelmet from "../../components/ui/TitleHelmet";
 
 const ServiceDetails = () => {
     const { user } = useAuth();
@@ -8,6 +9,7 @@ const ServiceDetails = () => {
     const { _id, nameOfService, nameOfServiceProvider, email, price, serviceArea, description, image } = service;
     return (
         <div className="flex justify-center mx-auto text-center">
+            <TitleHelmet title='PrintHubFinder | ServiceDetails'></TitleHelmet>
             <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-900 dark:text-gray-100">
                 <div className="flex space-x-4">
                     <img alt="" src={user?.photoURL} className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500" />

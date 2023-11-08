@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import TitleHelmet from "../../components/ui/TitleHelmet";
 
 const ManageServices = () => {
     const navigate = useNavigate();
@@ -35,6 +36,7 @@ const ManageServices = () => {
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-3 justify-between">
+            <TitleHelmet title='PrintHubFinder | ManageServices'></TitleHelmet>
             {/* ManageServices services.length => EditOrUpdateOrPut and Delete */}
             {
                 services?.map(service =>

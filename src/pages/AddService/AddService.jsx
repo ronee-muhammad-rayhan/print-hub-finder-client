@@ -1,5 +1,6 @@
 import { Button, Label, TextInput } from "flowbite-react";
 import useAuth from "../../hooks/useAuth";
+import TitleHelmet from "../../components/ui/TitleHelmet";
 
 const AddService = () => {
 
@@ -46,6 +47,7 @@ const AddService = () => {
     }
     return (
         <form onSubmit={handleSubmit} className=" sm:mx-0 mx-3 md:mx-5 lg:mx-7 xl:mx-14 2xl:mx-96">
+            <TitleHelmet title='PrintHubFinder | AddService'></TitleHelmet>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <div className="mb-2 block">

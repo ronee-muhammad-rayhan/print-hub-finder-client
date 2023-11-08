@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import ServiceCard from './ServiceCard';
+import TitleHelmet from '../../components/ui/TitleHelmet';
 
 const Services = () => {
 
@@ -20,7 +21,7 @@ const Services = () => {
                 console.log(response.data);
                 setServices(response.data);
             });
-    }, []);
+    }, [url]);
 
     // if (!showAll && !minServices) {
     //     const selectedServices = services.slice(1, 4);
@@ -41,25 +42,28 @@ const Services = () => {
     // }
 
     return (
-        <div className='w-full flex flex-col mx-auto border border-red-500'>
-            {/* Filter Section */}
-            <section>
+        <div className='flex justify-center items-center'>
+            <TitleHelmet title='PrintHubFinder | Services'></TitleHelmet>
+            <div className='w-full flex flex-col mx-auto border'>
+                {/* Filter Section */}
+                {/* <section>
 
-            </section>
-            {/* Services Section */}
-            <section className='flex flex-col w-full mx-auto'>
-                {
-                    services.map((service) => <ServiceCard key={service._id} service={service}></ServiceCard>)
-                    // renderServices?.map((service) => <ServiceCard key={service._id} service={service}></ServiceCard>)
-                }
-            </section>
+                </section> */}
+                {/* Services Section */}
+                <section className='flex flex-col w-full mx-auto'>
+                    {
+                        services.map((service) => <ServiceCard key={service._id} service={service}></ServiceCard>)
+                        // renderServices?.map((service) => <ServiceCard key={service._id} service={service}></ServiceCard>)
+                    }
+                </section>
 
-            {/* <div onClick={() => setSeeMoreClicked(true)} className='text-center pt-14 pb-40' style={{}}>
+                {/* <div onClick={() => setSeeMoreClicked(true)} className='text-center pt-14 pb-40' style={{}}>
                 {
                     showAll && <button className='bg-[#009444] text-white text-xs font-semibold px-7 py-4 rounded-lg'>See More</button>
                 }
             </div> */}
 
+            </div>
         </div>
     );
 };
