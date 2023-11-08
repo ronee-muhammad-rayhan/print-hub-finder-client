@@ -46,6 +46,7 @@ const UpdateService = () => {
                 console.log(data);
             });
     }
+
     return (
         <form onSubmit={handleSubmit} className=" sm:mx-0 mx-3 md:mx-5 lg:mx-7 xl:mx-14 2xl:mx-96">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
