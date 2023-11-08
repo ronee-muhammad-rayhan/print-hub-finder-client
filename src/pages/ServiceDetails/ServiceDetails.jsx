@@ -22,7 +22,7 @@ const ServiceDetails = () => {
                     <p className="text-sm dark:text-gray-400">{description}</p>
                 </div>
                 <div className="mx-auto">
-                    <BookingModal></BookingModal>
+                    <BookingModal service={service}></BookingModal>
                 </div>
                 <div className="flex flex-wrap justify-between">
                     <div className="space-x-2">

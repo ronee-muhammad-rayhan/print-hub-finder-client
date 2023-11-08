@@ -1,9 +1,12 @@
 import { Button, Checkbox, Label, Modal, TextInput } from 'flowbite-react';
 import { useRef, useState } from 'react';
+import useAuth from '../../hooks/useAuth';
 
-const BookingModal = () => {
+const BookingModal = ({ service }) => {
     const [openModal, setOpenModal] = useState(false);
     const emailInputRef = useRef < HTMLInputElement > (null);
+    const { _id, nameOfService, nameOfServiceProvider, email, price, serviceArea, description, image } = service;
+    const { user } = useAuth();
 
     return (
         <>
@@ -12,36 +15,37 @@ const BookingModal = () => {
                 <Modal.Header />
                 <Modal.Body>
                     <div className="space-y-6">
-                        <h3 className="text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h3>
+                        <h3 className="text-xl text-center font-medium text-gray-900 dark:text-white">{nameOfService}</h3>
+                        <div className="h-48"><img className="w-full h-48  object-contain" src={image} alt="Image Description" /></div>
+                        <div>
+                            <div className="mb-2 block">
+                                <Label htmlFor="email" value="Service Provider&apos;s email" />
+                            </div>
+                            <TextInput id="email" useRef={emailInputRef} defaultValue={email} placeholder="name@company.com" required readOnly />
+                        </div>
                         <div>
                             <div className="mb-2 block">
                                 <Label htmlFor="email" value="Your email" />
                             </div>
-                            <TextInput id="email" useRef={emailInputRef} placeholder="name@company.com" required />
+                            <TextInput id="email" useRef={emailInputRef} defaultValue={user.email} placeholder="name@company.com" required readOnly />
                         </div>
                         <div>
                             <div className="mb-2 block">
-                                <Label htmlFor="password" value="Your password" />
+                                <Label htmlFor="password" value="Service Taking Date" />
                             </div>
-                            <TextInput id="password" type="password" required />
+                            <TextInput id="password" type="date" required />
+                        </div>
+                        <div>
+                            <div className="mb-2 block">
+                                <Label htmlFor="password" value="Special Instruction" />
+                            </div>
+                            <TextInput id="password" type="text" required />
                         </div>
                         <div className="flex justify-between">
-                            <div className="flex items-center gap-2">
-                                <Checkbox id="remember" />
-                                <Label htmlFor="remember">Remember me</Label>
-                            </div>
-                            <a href="#" className="text-sm text-cyan-700 hover:underline dark:text-cyan-500">
-                                Lost Password?
-                            </a>
+                            <h3>Price: ${price}</h3>
                         </div>
                         <div className="w-full">
-                            <Button>Log in to your account</Button>
-                        </div>
-                        <div className="flex justify-between text-sm font-medium text-gray-500 dark:text-gray-300">
-                            Not registered?&nbsp;
-                            <a href="#" className="text-cyan-700 hover:underline dark:text-cyan-500">
-                                Create account
-                            </a>
+                            <Button className='mx-auto'>Purchase This Service</Button>
                         </div>
                     </div>
                 </Modal.Body>
