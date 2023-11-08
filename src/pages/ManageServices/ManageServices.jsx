@@ -1,8 +1,10 @@
 // import axios from "axios";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const ManageServices = () => {
+    const navigate = useNavigate();
     const { user } = useAuth();
     const [services, setServices] = useState([]);
     useEffect(() => {
@@ -15,6 +17,11 @@ const ManageServices = () => {
             .then(res => res.json())
             .then(data => setServices(data))
     }, [user.email]);
+
+    const handleUpdate = id => {
+        return navigate(`/my-services/update/${id}`);
+    }
+
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-3 justify-between">
             {/* ManageServices services.length => EditOrUpdateOrPut and Delete */}
@@ -35,9 +42,11 @@ const ManageServices = () => {
                                 </div>
                             </div>
                             <div className="w-full flex justify-around flex-1">
-                                <button type="button" className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-yellow-500 text-white hover:bg-yellow-600 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                {/* Update Action */}
+                                <button onClick={() => handleUpdate(service._id)} type="button" className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-yellow-500 text-white hover:bg-yellow-600 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
                                     Edit
                                 </button>
+                                {/* Delete Action */}
                                 <button type="button" className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-red-500 text-white hover:bg-red-600 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
                                     Delete
                                 </button>
