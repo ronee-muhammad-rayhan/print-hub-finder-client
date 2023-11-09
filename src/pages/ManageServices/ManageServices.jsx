@@ -10,12 +10,12 @@ const ManageServices = () => {
     const { user } = useAuth();
     const [services, setServices] = useState([]);
     useEffect(() => {
-        axios.get(`http://localhost:5003/my-services?email=${user.email}`, { withCredentials: true })
+        axios.get(`https://b8a11-server-print-hub-finder.vercel.app/my-services?email=${user.email}`, { withCredentials: true })
             .then(res => {
                 console.log(res.data);
                 setServices(res.data)
             })
-        /* fetch(`http://localhost:5003/my-services?email=${user.email}`, { credentials: 'include' })
+        /* fetch(`https://b8a11-server-print-hub-finder.vercel.app/my-services?email=${user.email}`, { credentials: 'include' })
             .then(res => res.json())
             .then(data => setServices(data)); */
     }, [user.email]);
@@ -36,7 +36,7 @@ const ManageServices = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5003/services/${id}`, { withCredentials: true })
+                axios.delete(`https://b8a11-server-print-hub-finder.vercel.app/services/${id}`, { withCredentials: true })
                     .then(res => {
                         console.log(res.data);
                         setServices(res.data)
@@ -49,7 +49,7 @@ const ManageServices = () => {
                 });
             }
         });
-        // axios.delete(`http://localhost:5003/services/${id}`, { withCredentials: true })
+        // axios.delete(`https://b8a11-server-print-hub-finder.vercel.app/services/${id}`, { withCredentials: true })
         //     .then(res => {
         //         console.log(res.data);
         //         setServices(res.data)
