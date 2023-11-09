@@ -1,4 +1,5 @@
-import { Button, Checkbox, Label, Modal, TextInput } from 'flowbite-react';
+import PropTypes from "prop-types"
+import { Button, /* Checkbox,  */Label, Modal, TextInput } from 'flowbite-react';
 import { useRef, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import axios from 'axios';
@@ -6,7 +7,7 @@ import axios from 'axios';
 const BookingModal = ({ service }) => {
     const [openModal, setOpenModal] = useState(false);
     const emailInputRef = useRef < HTMLInputElement > (null);
-    const { _id, nameOfService, nameOfServiceProvider, email, price, serviceArea, description, image, imageOfServiceProvider } = service;
+    const { /* _id, */ nameOfService, nameOfServiceProvider, email, price, serviceArea, description, image, imageOfServiceProvider } = service;
     const { user } = useAuth();
 
     const [specialInstruction, setSpecialInstruction] = useState('');
@@ -38,7 +39,7 @@ const BookingModal = ({ service }) => {
             imageOfServiceReceiver: user.photoURL,
         }
 
-        axios.post(`http://localhost:5003/bookings/`, booking, { withCredentials: true })
+        axios.post(`https://b8a11-server-print-hub-finder.vercel.app/bookings/`, booking, { withCredentials: true })
             .then(res => {
                 console.log(res.data);
             })
@@ -89,5 +90,19 @@ const BookingModal = ({ service }) => {
         </>
     );
 };
+
+BookingModal.propTypes = {
+    service: PropTypes.shape({
+        _id: PropTypes.any,
+        description: PropTypes.any,
+        email: PropTypes.any,
+        image: PropTypes.any,
+        imageOfServiceProvider: PropTypes.any,
+        nameOfService: PropTypes.any,
+        nameOfServiceProvider: PropTypes.any,
+        price: PropTypes.any,
+        serviceArea: PropTypes.any
+    })
+}
 
 export default BookingModal;

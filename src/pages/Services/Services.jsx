@@ -13,10 +13,10 @@ const Services = () => {
 
     // const [renderServices, setRenderServices] = useState(services);
 
-    const url = `http://localhost:5003/services`
+    const url = `https://b8a11-server-print-hub-finder.vercel.app/services`
 
     useEffect(() => {
-        axios.get(url, { withCredentials: true })
+        axios.get(url)
             .then((response) => {
                 console.log(response.data);
                 setServices(response.data);

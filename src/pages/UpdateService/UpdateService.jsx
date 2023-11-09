@@ -39,10 +39,10 @@ const UpdateService = () => {
 
         }
 
-        axios.put(`http://localhost:5003/my-services/update/${serviceFromParams._id}`, service, { withCredentials: true })
+        axios.put(`https://b8a11-server-print-hub-finder.vercel.app/my-services/update/${serviceFromParams._id}`, service, { withCredentials: true })
             .then(res => console.log(res.data));
 
-        /* fetch(`http://localhost:5003/my-services/update/${serviceFromParams._id}`, {
+        /* fetch(`https://b8a11-server-print-hub-finder.vercel.app/my-services/update/${serviceFromParams._id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

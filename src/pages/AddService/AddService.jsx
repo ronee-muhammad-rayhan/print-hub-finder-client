@@ -34,10 +34,10 @@ const AddService = () => {
 
         }
 
-        axios.post('http://localhost:5003/services', service, { withCredentials: true })
+        axios.post('https://b8a11-server-print-hub-finder.vercel.app/services', service, { withCredentials: true })
             .then(res => console.log(res.data))
 
-        /* fetch('http://localhost:5003/services', {
+        /* fetch('https://b8a11-server-print-hub-finder.vercel.app/services', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
