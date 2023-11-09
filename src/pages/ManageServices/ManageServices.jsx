@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { Link/* , useNavigate */ } from "react-router-dom";
 import TitleHelmet from "../../components/ui/TitleHelmet";
+import Swal from 'sweetalert2'
 
 const ManageServices = () => {
     // const navigate = useNavigate();
@@ -25,14 +26,44 @@ const ManageServices = () => {
     } */
 
     const handleDelete = (id) => {
-        fetch(`/services/${id}`, {
-            method: 'DELETE',
-        })
-            .then(r => r.json())
-            .then(data => {
-                console.log(data);
-                console.log('deleted successfully');
-            });
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:5003/services/${id}`, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data);
+                        setServices(res.data)
+                        console.log('deleted successfully');
+                    });
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your service has been deleted.",
+                    icon: "success"
+                });
+            }
+        });
+        // axios.delete(`http://localhost:5003/services/${id}`, { withCredentials: true })
+        //     .then(res => {
+        //         console.log(res.data);
+        //         setServices(res.data)
+        //         console.log('deleted successfully');
+        //         /* Swal.fire({
+        //             // title: "Welcome!",
+        //             text: "Deleted successfully",
+        //             icon: "success",
+        //             // confirmButtonText: "Cool",
+        //             showConfirmButton: false,
+        //             position: "top-right",
+        //             timer: 1500,
+        //         }); */
+        //     });
     }
 
     return (
@@ -40,9 +71,9 @@ const ManageServices = () => {
             <TitleHelmet title='PrintHubFinder | ManageServices'></TitleHelmet>
             {/* ManageServices services.length => EditOrUpdateOrPut and Delete */}
             {
-                services?.map(service =>
+                services.length > 0 ? services?.map(service =>
                     <div key={service._id}>
-                        <a className="flex flex-col items-center text-center bg-white border shadow-sm rounded-xl hover:shadow-lg transition dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7] h-[428px] py-6" href="#">
+                        <div className="flex flex-col items-center text-center bg-white border shadow-sm rounded-xl hover:shadow-lg transition dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7] h-[428px] py-6">
                             <div className="grow">
                                 <div className="h-48"><img className="w-full h-48  object-contain" src={service.image} alt="Image Description" /></div>
                                 <div className="p-4 md:p-5">
@@ -67,9 +98,9 @@ const ManageServices = () => {
                                     Delete
                                 </button>
                             </div>
-                        </a>
+                        </div>
                     </div>
-                )
+                ) : undefined
             }
         </div>
     );

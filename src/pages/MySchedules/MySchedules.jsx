@@ -22,11 +22,32 @@ const MySchedules = () => {
     return (
         <div>
             <TitleHelmet title='PrintHubFinder | MySchedules'></TitleHelmet>
-            MySchedules
+            <h2 className="text-5xl font-bold text-center py-8">MySchedules</h2>
             {/* Bookings Section => /my-schedules/bookings -> get */}
-            <h3>{bookings?.length}</h3>
+            <h3 className="text-3xl font-bold text-center pb-4">My Booking: {bookings?.length}</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-3 justify-between">
+                {
+                    bookings?.map(booking => <div key={booking._id}>
+                        <div className="flex flex-col items-center text-center bg-white border shadow-sm rounded-xl hover:shadow-lg transition dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7] h-[428px] py-6">
+                            <div className="grow">
+                                <div className="h-48"><img className="w-full h-48  object-contain" src={booking.image} alt="Image Description" /></div>
+                                <div className="p-4 md:p-5">
+                                    <h3 className="text-lg font-bold text-gray-800 dark:text-white">
+                                        {booking.nameOfService}
+                                    </h3>
+                                    <p className="mt-1 text-gray-500 dark:text-gray-400">
+                                        {booking.description}
+                                    </p>
+                                    <h3>Price: ${booking.price}</h3>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>)
+                }
+            </div>
             {/* PendingWorks Section => /my-schedules/pending-works update->patch */}
-            <h3>{pendingWorks?.length}</h3>
+            <h3 className="text-3xl font-bold text-center">My Pending Works: {pendingWorks?.length}</h3>
         </div>
     );
 };
