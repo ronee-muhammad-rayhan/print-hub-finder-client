@@ -13,7 +13,7 @@ const Services = () => {
 
     // const [renderServices, setRenderServices] = useState(services);
 
-    const url = `https://b8a11-server-print-hub-finder.vercel.app/services`
+    const url = `http://localhost:5003/services`
 
     useEffect(() => {
         axios.get(url)

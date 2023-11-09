@@ -8,13 +8,13 @@ const MySchedules = () => {
     const [bookings, setBookings] = useState();
     const [pendingWorks, setPendingWorks] = useState();
     useEffect(() => {
-        axios.get(`https://b8a11-server-print-hub-finder.vercel.app/my-schedules/bookings?email=${user?.email}`, { withCredentials: true })
+        axios.get(`http://localhost:5003/my-schedules/bookings?email=${user?.email}`, { withCredentials: true })
             .then((response) => {
                 setBookings(response.data);
             })
     }, [user?.email]);
     useEffect(() => {
-        axios.get(`https://b8a11-server-print-hub-finder.vercel.app/my-schedules/pending-works?email=${user?.email}`, { withCredentials: true })
+        axios.get(`http://localhost:5003/my-schedules/pending-works?email=${user?.email}`, { withCredentials: true })
             .then((response) => {
                 setPendingWorks(response.data);
             })

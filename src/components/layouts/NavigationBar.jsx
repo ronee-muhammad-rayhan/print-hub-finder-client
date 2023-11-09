@@ -11,7 +11,7 @@ const NavigationBar = () => {
     const handleLogout = () => {
         logOut().then(() => {
             console.log('logged out', user);
-            axios.post('https://b8a11-server-print-hub-finder.vercel.app/logout', user)
+            axios.post('http://localhost:5003/logout', user)
                 .then(res => {
                     console.log(res.data);
                 });

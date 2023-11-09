@@ -75,12 +75,12 @@ const AuthProvider = ({ children }) => {
 
             // if user exists then issue a token
             // if (currentUser) {
-            //     axios.post('https://b8a11-server-print-hub-finder.vercel.app/jwt', loggedInUser, { withCredentials: true })
+            //     axios.post('http://localhost:5003/jwt', loggedInUser, { withCredentials: true })
             //         .then(res => {
             //             console.log('token response: ' + res.data);
             //         })
             // } else {
-            //     axios.post('https://b8a11-server-print-hub-finder.vercel.app/logout', loggedInUser, { withCredentials: true })
+            //     axios.post('http://localhost:5003/logout', loggedInUser, { withCredentials: true })
             //         .then(res => {
             //             console.log(res.data);
             //         })
@@ -88,20 +88,20 @@ const AuthProvider = ({ children }) => {
 
 
             // const user = { email };
-            // axios.post('https://b8a11-server-print-hub-finder.vercel.app/jwt', user, { withCredentials: true })
+            // axios.post('http://localhost:5003/jwt', user, { withCredentials: true })
             //     .then(res => {
             //         console.log(res.data);
             //         console.log(res.data.success);
             //     })
 
             let payload = { email: user?.email }
-            axios.post('https://b8a11-server-print-hub-finder.vercel.app/jwt', payload, { withCredentials: true })
+            axios.post('http://localhost:5003/jwt', payload, { withCredentials: true })
                 .then(res => {
                     console.log(res.data);
                     console.log(res.data.success);
                 });
             // if (user?.email) {
-            //     axios.post('https://b8a11-server-print-hub-finder.vercel.app/jwt', payload, { withCredentials: true })
+            //     axios.post('http://localhost:5003/jwt', payload, { withCredentials: true })
             //         .then(res => {
             //             console.log(res.data);
             //             console.log(res.data.success);

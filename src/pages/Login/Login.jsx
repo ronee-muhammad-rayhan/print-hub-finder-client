@@ -3,10 +3,14 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 import TitleHelmet from "../../components/ui/TitleHelmet";
 // import axios from "axios";
+import toast, { Toaster } from 'react-hot-toast';
+import Swal from 'sweetalert2'
+
+const notify = () => toast('Here is your toast.');
 
 const Login = () => {
     const { loginUser, setUser, loginWithGoogle } = useAuth();
@@ -14,8 +18,31 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     console.log(location);
+    const swalNotification = () => {
+        Swal.fire({
+            title: "Welcome!",
+            text: "Login successful",
+            icon: "success",
+            // confirmButtonText: "Cool",
+            showConfirmButton: false,
+            position: "top-right",
+            timer: 1500,
+        });
+    }
 
-    const notify = () => toast("Login successfull!!!");
+    // const notify = () => {
+    //     console.log('ReactToastify');
+    //     toast("Login successfull!!!", {
+    //         position: "top-center",
+    //         autoClose: 5000,
+    //         hideProgressBar: false,
+    //         closeOnClick: true,
+    //         pauseOnHover: true,
+    //         draggable: true,
+    //         progress: undefined,
+    //         theme: "light",
+    //     });
+    // }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -25,6 +52,8 @@ const Login = () => {
         console.log(email, password);
         loginUser(email, password)
             .then((userCredential) => {
+                swalNotification();
+                notify();
                 // user logged in successfully
                 // setUser(userCredential.user);
                 console.log(userCredential.user);
@@ -36,7 +65,7 @@ const Login = () => {
 
                 // console.log(user);
 
-                /* axios.post('https://b8a11-server-print-hub-finder.vercel.app/jwt', user, { withCredentials: true })
+                /* axios.post('http://localhost:5003/jwt', user, { withCredentials: true })
                     .then(res => {
                         console.log(res.data);
                         if (res.data.success) {
@@ -44,15 +73,19 @@ const Login = () => {
                             navigate(location?.state ? location.state : '/')
                         }
                     }) */
-                notify();
-                navigate(location?.state ? location.state : '/')
+
+                // navigate(location?.state ? location.state : '/')
                 if (location.state) {
                     navigate(`${location.state}`);
+                    // navigate('/services');
+
                 } else {
-                    navigate('/');
+                    // navigate('/');
+                    navigate('/services');
+
                 }
                 // navigate after login
-                navigate(location?.state ? location.state : '/');
+                // navigate(location?.state ? location.state : '/');
 
                 // notify();
                 // navigate(`${location.state}`);
@@ -74,12 +107,15 @@ const Login = () => {
         loginWithGoogle()
             .then((userCredential) => {
                 console.log(userCredential.user);
+                swalNotification();
                 notify();
                 // navigate(`${location.state} || ${"/"}`);
                 if (location.state) {
+                    // navigate('/services');
+
                     navigate(`${location.state}`);
                 } else {
-                    navigate('/');
+                    navigate('/services');
                 }
             })
             .catch((error) => {
@@ -88,7 +124,7 @@ const Login = () => {
             });
     }
     return (
-        <>
+        <div>
             <TitleHelmet title='PrintHubFinder | Login'></TitleHelmet>
             <form onSubmit={handleSubmit} className="flex max-w-[1200px] flex-col gap-4 mx-auto w-3/4 md:w-2/3 lg:w-1/2">
                 <div>
@@ -116,8 +152,9 @@ const Login = () => {
             </div>
             <p className="text-center py-4">New to <span className="font-bold">PrinterHubFinder</span>? <Link to={`/register`} className="text-orange-500 font-bold">Register</Link></p>
             <p className="text-center text-red-600">{error}</p>
-            <ToastContainer />
-        </>
+            {/* <ToastContainer /> */}
+            <Toaster />
+        </div>
     );
 };
 

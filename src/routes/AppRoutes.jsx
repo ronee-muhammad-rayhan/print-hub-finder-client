@@ -30,7 +30,7 @@ export const router = createBrowserRouter([
             {
                 path: '/services/:id',
                 element: <PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`https://b8a11-server-print-hub-finder.vercel.app/services/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5003/services/${params.id}`)
             },
             {
                 path: "login",
@@ -51,7 +51,7 @@ export const router = createBrowserRouter([
             {
                 path: "my-services/update/:id",
                 element: <PrivateRoute><UpdateService></UpdateService></PrivateRoute>,
-                loader: ({ params }) => fetch(`https://b8a11-server-print-hub-finder.vercel.app/my-services/update/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5003/my-services/update/${params.id}`)
             },
             {
                 path: "my-schedules/bookings",

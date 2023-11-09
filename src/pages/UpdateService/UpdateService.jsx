@@ -39,10 +39,10 @@ const UpdateService = () => {
 
         }
 
-        axios.put(`https://b8a11-server-print-hub-finder.vercel.app/my-services/update/${serviceFromParams._id}`, service, { withCredentials: true })
+        axios.put(`http://localhost:5003/my-services/update/${serviceFromParams._id}`, service, { withCredentials: true })
             .then(res => console.log(res.data));
 
-        /* fetch(`https://b8a11-server-print-hub-finder.vercel.app/my-services/update/${serviceFromParams._id}`, {
+        /* fetch(`http://localhost:5003/my-services/update/${serviceFromParams._id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -73,7 +73,7 @@ const UpdateService = () => {
                     <div className="mb-2 block">
                         <Label htmlFor="serviceName" value="NameOfService" />
                     </div>
-                    <TextInput id="serviceName" type="text" name="nameOfService" placeholder="Name of the Service" defaultValue={serviceFromParams.nameOfService} required />
+                    <TextInput id="serviceName" type="text" name="nameOfService" placeholder="Name of the Service" defaultValue={serviceFromParams?.nameOfService} required />
                 </div>
                 <div>
                     <div className="mb-2 block">

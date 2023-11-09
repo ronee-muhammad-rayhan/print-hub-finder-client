@@ -39,7 +39,7 @@ const BookingModal = ({ service }) => {
             imageOfServiceReceiver: user.photoURL,
         }
 
-        axios.post(`https://b8a11-server-print-hub-finder.vercel.app/bookings/`, booking, { withCredentials: true })
+        axios.post(`http://localhost:5003/bookings/`, booking, { withCredentials: true })
             .then(res => {
                 console.log(res.data);
             })
