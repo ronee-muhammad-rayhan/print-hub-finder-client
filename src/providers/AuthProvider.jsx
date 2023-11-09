@@ -86,11 +86,27 @@ const AuthProvider = ({ children }) => {
             //         })
             // }
 
-            axios.post('http://localhost:5003/jwt', user, { withCredentials: true })
+
+            // const user = { email };
+            // axios.post('http://localhost:5003/jwt', user, { withCredentials: true })
+            //     .then(res => {
+            //         console.log(res.data);
+            //         console.log(res.data.success);
+            //     })
+
+            let payload = { email: user?.email }
+            axios.post('http://localhost:5003/jwt', payload, { withCredentials: true })
                 .then(res => {
                     console.log(res.data);
                     console.log(res.data.success);
-                })
+                });
+            // if (user?.email) {
+            //     axios.post('http://localhost:5003/jwt', payload, { withCredentials: true })
+            //         .then(res => {
+            //             console.log(res.data);
+            //             console.log(res.data.success);
+            //         });
+            // }
 
         });
         return () => {

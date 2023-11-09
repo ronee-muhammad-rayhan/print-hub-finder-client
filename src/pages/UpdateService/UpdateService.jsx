@@ -1,15 +1,19 @@
 import { Button, Label, TextInput } from "flowbite-react";
 import useAuth from "../../hooks/useAuth";
-import { useParams } from "react-router-dom";
+import { useLoaderData, /* useParams */ } from "react-router-dom";
 import TitleHelmet from "../../components/ui/TitleHelmet";
+import axios from "axios";
 
 const UpdateService = () => {
 
     const { user } = useAuth();
-    const serviceFromParams = useParams();
+    // const serviceFromParams = useParams();
+    const serviceFromParams = useLoaderData();
+    console.log('serviceFromParams', serviceFromParams);
 
     const handleSubmit = event => {
         event.preventDefault();
+        console.log('handlesubmit');
 
         const form = event.target;
 
@@ -35,17 +39,30 @@ const UpdateService = () => {
 
         }
 
-        fetch('http://localhost:5003/services', {
-            method: 'POST',
+        axios.put(`http://localhost:5003/my-services/update/${serviceFromParams._id}`, service, { withCredentials: true })
+            .then(res => console.log(res.data));
+
+        /* fetch(`http://localhost:5003/my-services/update/${serviceFromParams._id}`, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(service)
         })
-            .then(res => res.json())
+            .then(res => {
+                return res.json();
+                // res.json();
+                // console.log(res);
+                // console.log(res.body);
+                // console.log(res.headers);
+                // console.log(res.status);
+                // // console.log(res.json());
+                // console.log(res.json);
+            })
             .then(data => {
                 console.log(data);
-            });
+                // console.log('status: ', data.statusCode);
+            }); */
     }
 
     return (
@@ -96,7 +113,7 @@ const UpdateService = () => {
                 <TextInput id="image1" type="text" name="image" defaultValue={serviceFromParams.image} required />
             </div>
 
-            <Button className="w-full my-3"><input type="submit" value="Update Service" /></Button>
+            <Button type="submit" className="w-full my-3">Update Service</Button>
         </form>
     );
 };

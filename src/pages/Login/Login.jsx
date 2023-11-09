@@ -32,9 +32,9 @@ const Login = () => {
                 const loggedInUser = userCredential.user;
                 setUser(loggedInUser);
 
-                const user = { email };
+                // const user = { email };
 
-                console.log(user);
+                // console.log(user);
 
                 /* axios.post('http://localhost:5003/jwt', user, { withCredentials: true })
                     .then(res => {

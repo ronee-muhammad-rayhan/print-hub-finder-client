@@ -1,27 +1,28 @@
-// import axios from "axios";
+import axios from "axios";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { Link/* , useNavigate */ } from "react-router-dom";
 import TitleHelmet from "../../components/ui/TitleHelmet";
 
 const ManageServices = () => {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const { user } = useAuth();
     const [services, setServices] = useState([]);
     useEffect(() => {
-        /*  axios.get(`http://localhost:5003/my-services?email=${user.email}`, { withCredentials: true })
-             .then(res => {
-                 console.log(res.data);
-                 setServices(res.data)
-             }) */
-        fetch(`http://localhost:5003/my-services?email=${user.email}`, { credentials: 'include' })
+        axios.get(`http://localhost:5003/my-services?email=${user.email}`, { withCredentials: true })
+            .then(res => {
+                console.log(res.data);
+                setServices(res.data)
+            })
+        /* fetch(`http://localhost:5003/my-services?email=${user.email}`, { credentials: 'include' })
             .then(res => res.json())
-            .then(data => setServices(data))
+            .then(data => setServices(data)); */
     }, [user.email]);
 
-    const handleUpdate = id => {
-        return navigate(`/my-services/update/${id}`);
-    }
+    /* const handleUpdate = id => {
+        console.log('update', id);
+        navigate(`/my-services/update/${id}`);
+    } */
 
     const handleDelete = (id) => {
         fetch(`/services/${id}`, {
@@ -56,9 +57,11 @@ const ManageServices = () => {
                             </div>
                             <div className="w-full flex justify-around flex-1">
                                 {/* Update Action */}
-                                <button onClick={() => handleUpdate(service._id)} type="button" className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-yellow-500 text-white hover:bg-yellow-600 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-                                    Edit
-                                </button>
+                                <Link to={`/my-services/update/${service._id}`}>
+                                    <button /* onClick={() => handleUpdate(service._id)} */ type="button" className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-yellow-500 text-white hover:bg-yellow-600 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                        Edit
+                                    </button>
+                                </Link>
                                 {/* Delete Action */}
                                 <button onClick={() => handleDelete(service._id)} type="button" className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-red-500 text-white hover:bg-red-600 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
                                     Delete

@@ -1,6 +1,7 @@
 import { Button, Label, TextInput } from "flowbite-react";
 import useAuth from "../../hooks/useAuth";
 import TitleHelmet from "../../components/ui/TitleHelmet";
+import axios from "axios";
 
 const AddService = () => {
 
@@ -33,7 +34,10 @@ const AddService = () => {
 
         }
 
-        fetch('http://localhost:5003/services', {
+        axios.post('http://localhost:5003/services', service, { withCredentials: true })
+            .then(res => console.log(res.data))
+
+        /* fetch('http://localhost:5003/services', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -43,7 +47,7 @@ const AddService = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-            });
+            }); */
     }
     return (
         <form onSubmit={handleSubmit} className=" sm:mx-0 mx-3 md:mx-5 lg:mx-7 xl:mx-14 2xl:mx-96">

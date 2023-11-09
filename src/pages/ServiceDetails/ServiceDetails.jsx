@@ -6,7 +6,7 @@ import TitleHelmet from "../../components/ui/TitleHelmet";
 const ServiceDetails = () => {
     const { user } = useAuth();
     const service = useLoaderData();
-    const { _id, nameOfService, nameOfServiceProvider, email, price, serviceArea, description, image } = service;
+    const { /* _id, */ nameOfService, nameOfServiceProvider, /* email, price, */ serviceArea, description, image } = service;
     return (
         <div className="flex justify-center mx-auto text-center">
             <TitleHelmet title='PrintHubFinder | ServiceDetails'></TitleHelmet>

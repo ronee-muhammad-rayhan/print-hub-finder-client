@@ -24,9 +24,9 @@ const MySchedules = () => {
             <TitleHelmet title='PrintHubFinder | MySchedules'></TitleHelmet>
             MySchedules
             {/* Bookings Section => /my-schedules/bookings -> get */}
-            <h3>{bookings.length}</h3>
+            <h3>{bookings?.length}</h3>
             {/* PendingWorks Section => /my-schedules/pending-works update->patch */}
-            <h3>{pendingWorks.length}</h3>
+            <h3>{pendingWorks?.length}</h3>
         </div>
     );
 };

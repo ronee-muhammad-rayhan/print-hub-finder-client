@@ -2,6 +2,7 @@ import { Avatar, Dropdown, Navbar } from 'flowbite-react';
 import { Link, NavLink } from 'react-router-dom';
 import './NavigationBar.css';
 import useAuth from '../../hooks/useAuth';
+import axios from 'axios';
 
 const NavigationBar = () => {
 
@@ -9,7 +10,12 @@ const NavigationBar = () => {
 
     const handleLogout = () => {
         logOut().then(() => {
-            console.log('logged out');
+            console.log('logged out', user);
+            axios.post('http://localhost:5003/logout', user)
+                .then(res => {
+                    console.log(res.data);
+                });
+
         }).catch((error) => {
             // An error happened.
             console.error(error.message);
@@ -61,7 +67,7 @@ const NavigationBar = () => {
                     label={"Dashboard"}
                 >
                     <Link to={`/my-services?email=${user?.email}`}><Dropdown.Item>My Services</Dropdown.Item></Link>
-                    <Link to={`/add-a-service`}><Dropdown.Item href='#'>Add Services</Dropdown.Item></Link>
+                    <Link to={`/add-a-service`}><Dropdown.Item>Add Services</Dropdown.Item></Link>
                     <Link to={`/my-schedules/bookings?email=${user?.email}`}><Dropdown.Item>My Schedules</Dropdown.Item></Link>
                     {/* <Link><Dropdown.Item className='bg-red-300'>MySchedule</Dropdown.Item></Link> */}
                 </Dropdown>
