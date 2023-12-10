@@ -31,6 +31,29 @@ Here are some of the key features and functionalities of this project:
 12. **SPA with React**: FrontEnd is developed as a Single Page Application using React-Router.
 13. **MERN Stack Application**: This is a full stack solution where favorite MERN Stack Technologies(MongoDB, ExpressJS, ReactJS and NodeJs) are used.
 
+## :computer: Technologies that used in this project are
+
+<br>
+<p align="center">
+<img src="https://github.com/ronee-muhammad-rayhan/ronee-muhammad-rayhan/blob/main/images/icons/HTML.png"/>
+<img src="https://github.com/ronee-muhammad-rayhan/ronee-muhammad-rayhan/blob/main/images/icons/css.png"/>
+<img src="https://github.com/ronee-muhammad-rayhan/ronee-muhammad-rayhan/blob/main/images/icons/JavaScript.png"/>
+</p>
+<p align="center">
+  <a href="https://skillicons.dev" target="_blank">
+    <img src="https://skillicons.dev/icons?i=react,tailwind,firebase" />
+  </a>
+  <!--
+<img src="https://github.com/ronee-muhammad-rayhan/ronee-muhammad-rayhan/blob/main/images/icons/react.png"/>
+<img src="https://github.com/ronee-muhammad-rayhan/ronee-muhammad-rayhan/blob/main/images/icons/tailwind.png"/>
+<img src="https://github.com/ronee-muhammad-rayhan/ronee-muhammad-rayhan/blob/main/images/icons/firebase.png"/>
+  -->
+</p>
+<p align="center">
+<img src="https://github.com/ronee-muhammad-rayhan/ronee-muhammad-rayhan/blob/main/images/icons/node.png"/>
+<img src="https://github.com/ronee-muhammad-rayhan/ronee-muhammad-rayhan/blob/main/images/icons/express.png"/>
+<img src="https://github.com/ronee-muhammad-rayhan/ronee-muhammad-rayhan/blob/main/images/icons/mongo.png"/>
+</p><br/>
 
 ## Acknowledgments
 
