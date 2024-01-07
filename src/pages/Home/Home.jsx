@@ -8,6 +8,7 @@ import PopularServices from "./PopularServices";
 import Slider from "./Slider";
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
+import Subscribe from "./Subscribe";
 
 AOS.init();
 
@@ -70,6 +71,11 @@ const Home = () => {
             {/* Our Qualities Section */}
             <h3 className="text-3xl font-bold text- py-4 text-center">Our qualities</h3>
             <div data-aos='zoom-in-up'><OurQualitiesSection></OurQualitiesSection></div>
+
+            {/* Subscribe Section */}
+            <section className="py-12" data-aos='zoom-in'>
+                <Subscribe />
+            </section>
 
         </div>
     );
